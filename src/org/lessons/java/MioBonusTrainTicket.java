@@ -8,6 +8,7 @@ public class MioBonusTrainTicket {
         Scanner request = new Scanner(System.in);
 
         int kilometres;
+        int age;
 
         do {
             System.out.print("Inserisci il numero di chilometri da percorrere: ");
@@ -25,8 +26,21 @@ public class MioBonusTrainTicket {
             }
         } while (kilometres <= 0);
 
-        System.out.print("Inserisci età del passeggero: ");
-        int age = request.nextInt();
+        do {
+            System.out.print("Inserisci età del passeggero: ");
+
+            if (request.hasNextInt()) {
+                age = request.nextInt();
+
+                if (age <= 0) {
+                    System.out.println("L'età deve essere maggiore di 0");
+                }
+            } else {
+                System.out.println("Inserisci un'età valida.");
+                request.next();
+                age = -1;
+            }
+        } while (age <= 0);
 
         //variabili generali
         double pricePerKilometer = 0.21;
